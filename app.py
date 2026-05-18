@@ -8,7 +8,7 @@ API_KEY = "ABC123"
 
 @app.middleware("http")
 async def log_requests(request, call_next):
-    key = request.headers.get("X-API-Key")
+    key = request.headers.get("API-Key")
     if key != API_KEY:
         return JSONResponse(status_code=401, content={"message": "Unauthorized"})
     return await call_next(request)
