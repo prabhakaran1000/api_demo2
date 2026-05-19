@@ -10,7 +10,7 @@ API_KEY = "ABC123"
 async def log_requests(request, call_next):
     key = request.headers.get("X-API-Key")
     if key != API_KEY:
-        return JSONResponse(status_code=401, content={"message": "Unauthorized"})
+        return JSONResponse(status_code=401, content={"message": "not authorized"})
     return await call_next(request)
 
 @app.get("/welcome")
